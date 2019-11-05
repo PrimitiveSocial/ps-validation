@@ -1,0 +1,30 @@
+{
+  "name": "@primitivesocial/ps-validation",
+  "version": "1.0.0",
+  "description": "Vue data validation rules, very much inspired from Laravel validation",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/PrimitiveSocial/ps-validation.git"
+  },
+  "keywords": [
+    "vue",
+    "validation",
+    "rules",
+    "laravel-inspired",
+    "required",
+    "required_if",
+    "fails",
+    "passes",
+    "extend"
+  ],
+  "author": "Elie Andraos <elie@primitivesocial.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/PrimitiveSocial/ps-validation/issues"
+  },
+  "homepage": "https://github.com/PrimitiveSocial/ps-validation#readme"
+}
