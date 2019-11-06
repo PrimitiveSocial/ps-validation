@@ -119,26 +119,65 @@ You can add multiple rule to the same property or model by separating them with 
 ```
 
 ### Available rules
-- **required** The field under validation must be present in the input data and not empty
-- **integer** The field under validation must be an integer
-- **email** The field under validation must be a valid email
-- **string** The field under validation must be an integer
-- **date** The field under validation must be a date
-- **min:value** The field under validation must have a minimum value. Numbers are only evaluated for now
-- **max:value** The field under validation must have a maximum value. Numbers are only evaluated for now 
-- **before_or_equal:date** The field under validation must be a value preceding or equal to the given date
-- **before_or_equal:date** The field under validation must be a value after or equal to the given date
-- **required_if:boolean** The field under validation must be present and not empty if the boolean condition is true
+- **required** _The field under validation must be present in the input data and not empty_
+- **integer** _The field under validation must be an integer_
+- **email** _The field under validation must be a valid email_
+- **string** _The field under validation must be an integer_
+- **date** _The field under validation must be a date_
+- **min:value** _The field under validation must have a minimum value. Numbers are only evaluated for now_
+- **max:value** _The field under validation must have a maximum value. Numbers are only evaluated for now_
+- **before_or_equal:date** _The field under validation must be a value preceding or equal to the given date_
+- **after_or_equal:date** _The field under validation must be a value after or equal to the given date_
+- **required_if:boolean** _The field under validation must be present and not empty if the boolean condition is true_
 
 ```js
-// example of required_if rule
+// example of required_if and after_or_equal rules 
 data() {
    person: {
       is_student: false,
-      age: null
+      age: null,
+      registered_at: null,
    },
+   registration_ends: '31/1/2020',
    validations: [
-      {model: 'age', rules: 'requiredIf:is_student | integer | min:18'} // age will be required only if is_student is true
+      // age will be required only if is_student is true
+      {model: 'person.age', rules: 'requiredIf:is_student | integer | min:18'} ,
+      // registered_at will be required, must be a date and before or equal to registration_ends date
+      {model: 'person.registered_at', rules: 'required | date | before_or_equal:registration_ends'} 
    ]
 }
 ```
+
+## Adding Custom rule
+You can easily extend the validator by adding a custom rule using the method `extend(ruleName, function, errorMessage)`
+
+```js
+mounted() {
+   this.validator.extend(
+      'alpha_dash',
+      function(value, arg) {
+         let regexp = /^[a-z_]+$/i;
+         return !!regexp.test(value);
+      },
+      'this field must contain only letters as well as underscores.'
+   );
+},
+data() {
+   return {
+      username: '',
+      validations: [
+         { model: 'username', rules: 'string | alpha_dash' }
+      ]
+   }
+}
+```
+
+## Developer friendly
+Along with the jest tests, the plugin provides helpful warning messages in the browser console in case something is missed by the developer.
+Here are few examples:
+
+When you try to validate without setting the rules to the validator
+<img src="https://user-images.githubusercontent.com/55389566/68310640-06210b00-00b9-11ea-9606-fb65f64e0481.png" width="600" />
+
+Or when you add a rule that doesn't exist or not defined.
+<img src="https://user-images.githubusercontent.com/55389566/68310596-f43f6800-00b8-11ea-94f4-4654beadba2d.png" width="600" />
