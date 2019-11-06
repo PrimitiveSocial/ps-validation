@@ -12,6 +12,7 @@ Vue.use(PsValidation);
 ```
 
 ## Basic Usage Example
+The plugin provides a data property `validator` that creates a new instance of the validator. So you can use `this.validator` in your component without having to define it.
 In this example, we will demonstrate how to add a validation for `name` and `age` data properties before submitting the data using the method `submitData()`.
 
 ```js
@@ -141,7 +142,7 @@ data() {
    registration_ends: '31/1/2020',
    validations: [
       // age will be required only if is_student is true
-      {model: 'person.age', rules: 'requiredIf:is_student | integer | min:18'} ,
+      {model: 'person.age', rules: 'required_if:is_student | integer | min:18'} ,
       // registered_at will be required, must be a date and before or equal to registration_ends date
       {model: 'person.registered_at', rules: 'required | date | before_or_equal:registration_ends'} 
    ]
