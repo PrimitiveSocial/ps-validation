@@ -1,9 +1,10 @@
 {
   "name": "@primitivesocial/ps-validation",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Vue data validation rules, very much inspired from Laravel validation",
-  "main": "index.js",
+  "main": "dist/index.js",
   "scripts": {
+    "build": "babel src -d dist",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -26,5 +27,13 @@
   "bugs": {
     "url": "https://github.com/PrimitiveSocial/ps-validation/issues"
   },
-  "homepage": "https://github.com/PrimitiveSocial/ps-validation#readme"
+  "homepage": "https://github.com/PrimitiveSocial/ps-validation#readme",
+  "devDependencies": {
+    "@babel/cli": "^7.2.3",
+    "@babel/core": "^7.3.3",
+    "@babel/plugin-proposal-class-properties": "^7.7.0",
+    "@babel/preset-env": "^7.3.1",
+    "babel-eslint": "^10.0.1",
+    "eslint": "^5.14.0"
+  }
 }
