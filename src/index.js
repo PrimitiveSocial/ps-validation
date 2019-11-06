@@ -1,6 +1,6 @@
 import {Validator} from "./Classes/Validator";
 
-let PsValidation = {
+const PsValidation = {
     install: function(Vue, options = {}) {
         Vue.mixin({
             data() {
