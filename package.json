@@ -30,7 +30,7 @@
   "homepage": "https://github.com/PrimitiveSocial/ps-validation#readme",
   "devDependencies": {
     "@babel/cli": "^7.2.3",
-    "@babel/core": "^7.3.3",
+    "@babel/core": "^7.7.2",
     "@babel/plugin-proposal-class-properties": "^7.7.0",
     "@babel/preset-env": "^7.3.1",
     "jest": "^24.9.0"
