@@ -5,7 +5,6 @@ import {warnIf, warn} from "../utils/Console";
 
 export class Validator {
     componentInstance;
-    data;
     rules;
     errorsBag;
     isValid;
@@ -16,7 +15,6 @@ export class Validator {
 
     constructor(componentInstance) {
         this.componentInstance = componentInstance;
-        this.data = [];
         this.rules = null;
         this.errorsBag = [];
         this.isValid = true;
@@ -33,12 +31,6 @@ export class Validator {
         return this;
     }
 
-    setData(_data) {
-        warnIf(typeof _data !== 'object', 'The validator data must be an object');
-        this.data = _data;
-        return this;
-    }
-
     setCustomMessages(_customMessages) {
         warnIf(typeof _customMessages !== 'object', 'The validator customMessages must be an object');
         this.customMessages = _customMessages;
@@ -50,7 +42,15 @@ export class Validator {
     }
 
     getData() {
-        return this.data;
+        let _data = this.componentInstance.$data;
+        let result = {};
+
+        Object.keys(_data).forEach(key => {
+            if(key !== 'validator')
+                result[key] = _data[key];
+        });
+
+        return result;
     }
 
     getDefaultErrorMessages() {
