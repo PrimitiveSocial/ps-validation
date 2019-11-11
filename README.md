@@ -1,3 +1,8 @@
+![downloads](https://img.shields.io/npm/dt/@primitivesocial/ps-validation)
+![last-commit](https://img.shields.io/github/last-commit/PrimitiveSocial/ps-validation)
+![min-size](https://img.shields.io/bundlephobia/min/@primitivesocial/ps-validation/1.0.4)
+![depedencies-status](https://img.shields.io/librariesio/release/npm/@primitivesocial/ps-validation)
+
 A Vue plugin that provides out-of-the-box data validation rules, very much inspired from Laravel validation system.
 
 ## Installation

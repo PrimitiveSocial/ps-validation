@@ -4,6 +4,7 @@ import * as definedRules from "../utils/Rules";
 import {warnIf, warn} from "../utils/Console";
 
 export class Validator {
+    componentInstance;
     data;
     rules;
     errorsBag;
@@ -13,7 +14,8 @@ export class Validator {
     messages;
     customMessages;
 
-    constructor() {
+    constructor(componentInstance) {
+        this.componentInstance = componentInstance;
         this.data = [];
         this.rules = null;
         this.errorsBag = [];
@@ -88,6 +90,11 @@ export class Validator {
             });
         });
 
+         // update the error bag inside the validator of the vue component instance
+        if(typeof this.componentInstance === 'object' && this.componentInstance.$data) {
+            this.componentInstance.$data.validator.errorsBag = this.errorsBag;
+        }
+
         return this;
 
     }
@@ -122,7 +129,7 @@ export class Validator {
             key: key,
             model: model,
             message: errorMessage
-        });
+        });    
     }
 
     shouldIgnoreRequiredIfRules(rules) {

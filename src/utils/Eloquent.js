@@ -1,3 +1,6 @@
+/**
+ * Credit to this package: https://www.npmjs.com/package/dot-prop
+ */
 import {isObject} from "./Helper";
 
 const disallowedKeys = [
@@ -36,8 +39,7 @@ function getPathSegments(path) {
 }
 
 /**
- * Returns the value of a given path in an object.
- * Supports nested dot annotations.
+ * Get a property from a nested object using a dot path.
  *
  * @example find(data, 'notice.event')
  *
@@ -77,7 +79,7 @@ export function find(object, path, value) {
 }
 
 /**
- * Check if a path exists in a given object.
+ * Check if a property exists in a nested object using a dot path.
  *
  * @example has(data, 'notice.event')
  *

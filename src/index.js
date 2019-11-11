@@ -5,13 +5,13 @@ const PsValidation = {
         Vue.mixin({
             data() {
                 return {
-                    validator: new Validator()
+                    validator: null
                 }
             },
             methods: {
                 // renders the validator error (by model).
                 $error: function(model) {
-                    return this.validator.renderError(model);
+                    return (this.validator) ? this.validator.renderError(model) : null;
                 }
             },
             computed: {
@@ -27,6 +27,10 @@ const PsValidation = {
 
                     return result;
                 }
+            },
+            mounted() {
+                let sfc = this;
+                this.validator = new Validator(sfc);
             }
         });
     }
