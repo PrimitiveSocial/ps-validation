@@ -18,6 +18,7 @@ Vue.use(PsValidation);
 
 ## Basic Usage Example
 The plugin provides a data property `validator` that creates a new instance of the validator. So you can use `this.validator` in your component without having to define it.
+
 In this example, we will demonstrate how to add a validation for `name` and `age` data properties before submitting the data using the method `submitData()`.
 
 ```js
@@ -49,7 +50,7 @@ export default {
             age: 0,
          },
          // here we are adding the validation rules
-         validations: [
+         validationRules: [
             { model: 'name', rules: 'required' },
             { model: 'age', rules: 'required' }
          ]
@@ -60,11 +61,12 @@ export default {
 - **Next we will setup the validator and validate our data before submitting it**
 ```js
    mounted() {
-      this.validator.setRules(this.validations);
+      this.validator.setRules(this.validationRules);
    },
    methods: {
       submitData() {
-         this.validator = this.validator.setData(this.person).validate();
+         this.validator.validate();
+         
          if(this.validator.passes())
             axios.post(url, {data: this.person});
 
@@ -75,13 +77,7 @@ export default {
    }
 ```
 
-And that's it! 🦄 🚀  
-
-## $all helper
-If you need to pass all the data to the validator (not just a chunk of it), the plugin provides a computed property to do that.
-```js
-this.validator.setData($all).validate();
-````
+And that's it! 🦄 🦄 🚀 🚀 
 
 ## Error rendering & Customization
 The plugin provides a helper `$error` to render the error in the Vue component template.
@@ -95,15 +91,15 @@ You can customize the error message when setting up the validator.
 ```js
 this.validator
    .setCustomMessages({
-      'age.required': 'The person age must not be left empty.'
+      'person.age.required': 'The person age must not be left empty.'
    });
 ```
 _Note: the key provided in the `setCustomMessages()` object parameter, is always set to: `data property` concatenated with `rule name`_
 
 ## Working With Rules
 
-### Support for dot annotations
-You can validate deep nested properties inside your data object easily by adding dot annotations.
+### Support for dot path annotations
+You can validate deep nested properties inside your data object easily by adding dot path annotations.
 ```js
 data() {
    return {
@@ -128,7 +124,7 @@ You can add multiple rule to the same property or model by separating them with 
 - **required** _The field under validation must be present in the input data and not empty_
 - **integer** _The field under validation must be an integer_
 - **email** _The field under validation must be a valid email_
-- **string** _The field under validation must be an integer_
+- **string** _The field under validation must be an string_
 - **date** _The field under validation must be a date_
 - **min:value** _The field under validation must have a minimum value. Numbers are only evaluated for now_
 - **max:value** _The field under validation must have a maximum value. Numbers are only evaluated for now_
@@ -144,10 +140,10 @@ data() {
       age: null,
       registered_at: null,
    },
-   registration_ends: '31/1/2020',
+   registration_ends: '10/31/2020',
    validations: [
       // age will be required only if is_student is true
-      {model: 'person.age', rules: 'required_if:is_student | integer | min:18'} ,
+      {model: 'person.age', rules: 'required_if:person.is_student | integer | min:18'} ,
       // registered_at will be required, must be a date and before or equal to registration_ends date
       {model: 'person.registered_at', rules: 'required | date | before_or_equal:registration_ends'} 
    ]
