@@ -1,4 +1,5 @@
 import {warn} from "./Console";
+import {CreditCard} from "./../Classes/CreditCard";
 
 export function required(value, arg = null)  {
     return (value !== '' && value !== null && typeof value !== 'undefined');
@@ -52,6 +53,10 @@ export function required_if(value, arg) {
     return (!arg) ? true : required(value);
 }
 
+export function credit_card_number(value, arg) {
+    let cc = new CreditCard(value, arg);
+    return cc.isValid();
+}
 
 
 
