@@ -6,14 +6,16 @@ function inDevelopmentMode() {
 
 export function warn(message) {
     if(inDevelopmentMode()) {
-        console.warn(warnPrefix + message);
+        window.console.warn(warnPrefix + message);
+        return true;
     }
+    return false;
 }
 
 export function warnIf(condition, message) {
     if(inDevelopmentMode() && condition) {
-        console.warn(warnPrefix + message);
-        return false;
+        window.console.warn(warnPrefix + message);
+        return true;
     }
-    return true;
+    return false;
 }
