@@ -15,6 +15,11 @@ test('it returns true with a valid object', () => {
   expect(isObject(validObj)).toBe(true);
 });
 
+let nullObj = null;
+test('it returns false with null', () => {
+  expect(isObject(nullObj)).toBe(false);
+});
+
 let invalidObj = "foo:bar";
 test('it returns false with an invalid object', () => {
   expect(isObject(invalidObj)).toBe(false);

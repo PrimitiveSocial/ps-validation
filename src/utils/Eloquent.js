@@ -55,9 +55,9 @@ export function find(object, path, value) {
     }
 
     let pathArray = getPathSegments(path);
-    if (pathArray.length === 0) {
-        return;
-    }
+    // if (pathArray.length === 0) {
+    //     return;
+    // }
 
     for (let i = 0; i < pathArray.length; i++) {
         if (!Object.prototype.propertyIsEnumerable.call(object, pathArray[i])) {

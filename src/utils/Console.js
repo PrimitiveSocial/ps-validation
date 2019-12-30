@@ -1,20 +1,18 @@
 const warnPrefix = 'PsValidation debugger: ';
 
-function inDevelopmentMode() {
-    return (process.env.NODE_ENV !== 'production' && typeof console !== 'undefined');
-}
-
 export function warn(message) {
-    if(inDevelopmentMode()) {
+    if(!process.env.JEST_WORKER_ID) {
         window.console.warn(warnPrefix + message);
-        return true;
     }
-    return false;
+
+    return true;
 }
 
 export function warnIf(condition, message) {
-    if(inDevelopmentMode() && condition) {
-        window.console.warn(warnPrefix + message);
+    if(condition) {
+        if(!process.env.JEST_WORKER_ID) {
+            window.console.warn(warnPrefix + message);
+        }
         return true;
     }
     return false;
