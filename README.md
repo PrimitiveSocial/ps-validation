@@ -21,22 +21,19 @@ Vue.use(PsValidation);
 ## Basic Usage Example
 The plugin provides a data property `validator` that creates a new instance of the validator. So you can use `this.validator` in your component without having to define it.
 
-In this example, we will demonstrate how to add a validation for `name` and `age` data properties before submitting the data using the method `submitData()`.
+In this simple example, we will demonstrate how to add a validation for `name` property before submitting the data using the method `submitData()`.
 
 ```js
 // Vue SFC
 export default {
    data() {
       return {
-         person: {
-            name: '',
-            age: 0,
-         }
+          name: '',
       }
    },
    methods: {
       submitData() {
-         axios.post(url, {data: this.person});
+         axios.post(url, { data: { name: name} });
       }
    }
 }
@@ -47,14 +44,10 @@ export default {
 export default {
    data() {
       return {
-         person: {
-            name: '',
-            age: 0,
-         },
+         name: '',
          // here we are adding the validation rules
          validationRules: [
             { model: 'name', rules: 'required' },
-            { model: 'age', rules: 'required' }
          ]
       }
    }
@@ -70,11 +63,11 @@ export default {
          this.validator.validate();
          
          if(this.validator.passes())
-            axios.post(url, {data: this.person});
+            axios.post(url, { data: { name: name} });
 
          // You can also use .fails()
          if(this.validator.fails())
-            alert('Please fill your data');
+            alert('Name is required');
       }
    }
 ```
@@ -93,14 +86,12 @@ You can customize the error message when setting up the validator.
 ```js
 this.validator
    .setCustomMessages({
-      'person.age.required': 'The person age must not be left empty.'
+      'name': 'The name field must not be empty.'
    });
 ```
 _Note: the key provided in the `setCustomMessages()` object parameter, is always set to: `data property` concatenated with `rule name`_
 
-## Working With Rules
-
-### Support for dot path annotations
+## Support for dot path annotations
 You can validate deep nested properties inside your data object easily by adding dot path annotations.
 ```js
 data() {
@@ -116,6 +107,7 @@ data() {
    }
 }
 ```
+## Working With Rules
 ### Adding multiple rule
 You can add multiple rule to the same property or model by separating them with `|`
 ```js
@@ -133,21 +125,31 @@ You can add multiple rule to the same property or model by separating them with 
 - **before_or_equal:date** _The field under validation must be a value preceding or equal to the given date_
 - **after_or_equal:date** _The field under validation must be a value after or equal to the given date_
 - **required_if:boolean** _The field under validation must be present and not empty if the boolean condition is true_
+- **credit_card_number:cardType** _The field under validation must be a valid credit card number of the specified type_
+- **credit_card_cvv** _The field under validation must be a valid credit card cvv_
 
 ```js
-// example of required_if and after_or_equal rules 
+// example of combined rules 
 data() {
    person: {
       is_student: false,
       age: null,
       registered_at: null,
    },
+   card: {
+      number: null,
+      cvv: null,
+      type: 'Visa'
+   },
    registration_ends: '10/31/2020',
    validations: [
       // age will be required only if is_student is true
-      {model: 'person.age', rules: 'required_if:person.is_student | integer | min:18'} ,
+      { model: 'person.age', rules: 'required_if:person.is_student | integer | min:18' } ,
       // registered_at will be required, must be a date and before or equal to registration_ends date
-      {model: 'person.registered_at', rules: 'required | date | before_or_equal:registration_ends'} 
+      { model: 'person.registered_at', rules: 'required | date | before_or_equal:registration_ends' },
+      // credit card number and cvv validation
+      { model: 'card.number', rules: 'credit_card_number:card.type' },
+      { model: 'card.cvv', rules: 'credit_card_cvv' }, 
    ]
 }
 ```
@@ -175,7 +177,12 @@ data() {
    }
 }
 ```
-
+## Reinitializing the validator
+As it was mentioned in the introduction, the plugin provides a data property `validator` inside the Vue component.
+If for some reason in your application, you had to reset the `data()` property, you can reinitialize the validator by calling:
+```js
+this.$initValidator();
+```
 ## Developer friendly
 Along with the jest tests, the plugin provides helpful warning messages in the browser console in case something is missed by the developer.
 Here are few examples:
