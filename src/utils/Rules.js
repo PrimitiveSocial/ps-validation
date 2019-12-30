@@ -19,10 +19,16 @@ export function email (value, arg = null) {
 }
 
 export function min (value, arg) {
+    if(typeof value === 'object')
+        return false;
+
     return parseInt(value) >= parseInt(arg);
 }
 
 export function max (value, arg) {
+    if(typeof value === 'object')
+        return false;
+
     return parseInt(value) <= parseInt(arg);
 }
 
