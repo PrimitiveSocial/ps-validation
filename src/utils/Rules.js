@@ -38,12 +38,18 @@ export function date (value, arg = null) {
 }
 
 export function before_or_equal (value, arg) {
+    if(typeof value === 'object' || typeof arg === 'object' || typeof value === 'number' || typeof arg === 'number')
+        return false;
+
     let originalDate = new Date(value);
     let comparingDate = new Date(arg);
     return originalDate.getTime() <= comparingDate.getTime();
 }
 
 export function after_or_equal (value, arg) {
+    if(typeof value === 'object' || typeof arg === 'object' || typeof value === 'number' || typeof arg === 'number')
+        return false;
+
     let originalDate = new Date(value);
     let comparingDate = new Date(arg);
     return originalDate.getTime() >= comparingDate.getTime();
