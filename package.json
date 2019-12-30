@@ -1,6 +1,6 @@
 {
   "name": "@primitivesocial/ps-validation",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "description": "Vue data validation rules, very much inspired from Laravel validation",
   "main": "dist/index.js",
   "scripts": {
@@ -20,7 +20,9 @@
     "required_if",
     "fails",
     "passes",
-    "extend"
+    "extend",
+    "after_or_equal",
+    "credit_card_number",
   ],
   "author": "Elie Andraos <elie@primitivesocial.com>",
   "license": "MIT",
