@@ -18,8 +18,27 @@ export class Validator {
         this.rules = null;
         this.errorsBag = [];
         this.isValid = true;
-        this.availableRules = ['required', 'integer', 'email', 'min', 'max', 'string', 'required_if', 'date', 'before_or_equal', 'after_or_equal'];
-        this.rulesWithModelRelatedArguments = [ 'before_or_equal', 'after_or_equal', 'required_if'];
+        this.availableRules = [
+            'required',
+            'integer',
+            'email',
+            'min',
+            'max',
+            'string',
+            'required_if',
+            'date',
+            'before_or_equal',
+            'after_or_equal',
+            'credit_card_number',
+            'credit_card_cvv'
+        ];
+        this.rulesWithModelRelatedArguments = [
+            'before_or_equal',
+            'after_or_equal',
+            'required_if',
+            'credit_card_number',
+            'credit_card_cvv'
+        ];
         this.messages = this.getDefaultErrorMessages();
         this.customMessages = {};
 
@@ -65,6 +84,8 @@ export class Validator {
             date: 'This field must be a valid date',
             before_or_equal: 'This date must be before or equal to {arg}',
             after_or_equal: 'This date must be after or equal to {arg}',
+            credit_card_number: 'The card number is invalid',
+            credit_card_cvv: 'The card css is invalid',
         };
     }
 
