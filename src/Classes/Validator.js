@@ -85,7 +85,7 @@ export class Validator {
             before_or_equal: 'This date must be before or equal to {arg}',
             after_or_equal: 'This date must be after or equal to {arg}',
             credit_card_number: 'The card number is invalid',
-            credit_card_cvv: 'The card css is invalid',
+            credit_card_cvv: 'The card cvv is invalid',
         };
     }
 
@@ -99,7 +99,7 @@ export class Validator {
         validationRules.forEach( (item) => {
             let modelName = item.model;
             let modelValue = find(this.getData(), modelName);
-            let rules = item.rule.split('|');
+            let rules = item.rules.split('|');
 
             // if the rules contains 'required_if' rule, ignore the other rules unless the 'required_if' condition is matched
            if(this.shouldIgnoreRequiredIfRules(rules))
