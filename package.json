@@ -22,7 +22,7 @@
     "passes",
     "extend",
     "after_or_equal",
-    "credit_card_number",
+    "credit_card_number"
   ],
   "author": "Elie Andraos <elie@primitivesocial.com>",
   "license": "MIT",
