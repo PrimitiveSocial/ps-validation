@@ -128,6 +128,8 @@ You can add multiple rule to the same property or model by separating them with 
 - **credit_card_number:cardType** _The field under validation must be a valid credit card number of the specified type_
 - **credit_card_cvv** _The field under validation must be a valid credit card cvv_
 
+*Available credit card types for validation: `Visa, MasterCard, Amex, VisaElectron`
+
 ```js
 // example of combined rules 
 data() {
@@ -188,7 +190,11 @@ Along with the jest tests, the plugin provides helpful warning messages in the b
 Here are few examples:
 
 When you try to validate without setting the rules to the validator
-<img src="https://user-images.githubusercontent.com/55389566/68310640-06210b00-00b9-11ea-9606-fb65f64e0481.png" width="600" />
+```
+PsValidation debugger: You must specify the validation rules.
+```
 
 Or when you add a rule that doesn't exist or not defined.
-<img src="https://user-images.githubusercontent.com/55389566/68310596-f43f6800-00b8-11ea-94f4-4654beadba2d.png" width="600" />
+```
+PsValidation debugger: The rule wtv for the model noticeEvent.notifyDate is not defined. It will be ignored.
+```
