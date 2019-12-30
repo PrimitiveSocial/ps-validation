@@ -58,5 +58,11 @@ export function credit_card_number(value, arg) {
     return cc.isValid();
 }
 
+export function credit_card_cvv(value, arg = null) {
+    let numberLength = 3;
+    let regex = new RegExp(`^[0-9]{${numberLength}}$`);
+    return regex.test(value);
+}
+
 
 
