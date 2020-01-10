@@ -19,9 +19,9 @@ const PsValidation = {
                     return (this.validator) ? this.validator.renderError(model) : null;
                 }
             },
-            mounted() {
-                this.$initValidator();
-            }
+            //mounted() {
+                //this.$initValidator();
+            //}
         });
     }
 };

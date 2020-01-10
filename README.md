@@ -19,7 +19,7 @@ Vue.use(PsValidation);
 ```
 
 ## Basic Usage Example
-The plugin provides a data property `validator` that creates a new instance of the validator. So you can use `this.validator` in your component without having to define it.
+The plugin provides a data property `validator` that creates a new instance of the validator.
 
 In this simple example, we will demonstrate how to add a validation for `name` property before submitting the data using the method `submitData()`.
 
@@ -56,6 +56,7 @@ export default {
 - **Next we will setup the validator and validate our data before submitting it**
 ```js
    mounted() {
+      this.$initValidator();
       this.validator.setRules(this.validationRules);
    },
    methods: {
@@ -179,12 +180,7 @@ data() {
    }
 }
 ```
-## Reinitializing the validator
-As it was mentioned in the introduction, the plugin provides a data property `validator` inside the Vue component.
-If for some reason in your application, you had to reset the `data()` property, you can reinitialize the validator by calling:
-```js
-this.$initValidator();
-```
+
 ## Developer friendly
 Along with the jest tests, the plugin provides helpful warning messages in the browser console in case something is missed by the developer.
 Here are few examples:
