@@ -20,7 +20,7 @@ const PsValidation = {
                 }
             },
             mounted() {
-                this.$initValidator();
+                //this.$initValidator();
             }
         });
     }
