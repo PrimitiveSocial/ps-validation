@@ -8,7 +8,7 @@ test('it returns true with a valid syntax', () => {
 let invalidStr = 'required_if|hasEvent';
 test('it returns false with an invalid syntax', () => {
   expect(hasArg(invalidStr)).toBe(false);
-})
+});
 
 let validObj = { foo: 'bar'};
 test('it returns true with a valid object', () => {

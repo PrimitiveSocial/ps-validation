@@ -13,7 +13,8 @@ let data = {
 	a: null,
 	b: undefined,
 	c: true,
-	d: []
+	d: [],
+	e: {}
 };
 
 test('it finds name property in data', () => {
