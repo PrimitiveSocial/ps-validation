@@ -1,5 +1,4 @@
 name: NodeCI
-
 on: [push]
 
 jobs:
