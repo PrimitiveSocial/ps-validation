@@ -1,9 +1,8 @@
+![GitHub Workflow Status](https://img.shields.io/github/workflow/status/PrimitiveSocial/ps-validation/NodeCI)
+[![CodeFactor](https://www.codefactor.io/repository/github/primitivesocial/ps-validation/badge)](https://www.codefactor.io/repository/github/primitivesocial/ps-validation)
 ![downloads](https://img.shields.io/npm/dt/@primitivesocial/ps-validation)
-![downloads](https://img.shields.io/npm/v/@primitivesocial/ps-validation)
-![last-commit](https://img.shields.io/github/last-commit/PrimitiveSocial/ps-validation)
 ![min-size](https://img.shields.io/bundlephobia/min/@primitivesocial/ps-validation/1.0.6)
 ![license](https://img.shields.io/github/license/PrimitiveSocial/ps-validation)
-![closed-issues](https://img.shields.io/github/issues-closed-raw/PrimitiveSocial/ps-validation)
 
 A Vue plugin that provides out-of-the-box data validation rules, very much inspired from Laravel validation system.
 
@@ -194,3 +193,8 @@ Or when you add a rule that doesn't exist or not defined.
 ```
 PsValidation debugger: The rule wtv for the model noticeEvent.notifyDate is not defined. It will be ignored.
 ```
+
+## Author & Contribution
+Hey, I'm Elie Andraos, a web developer at [Primitive Social](https://twitter.com/PrimitiveSocial).
+Pull requests are always welcome. For major changes, please open an issue first to discuss what you would like to change.
+You can also [reach me out on twitter](https://twitter.com/andzilla31) for any question! 
