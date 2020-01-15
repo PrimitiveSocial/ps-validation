@@ -1,6 +1,6 @@
 {
   "name": "@primitivesocial/ps-validation",
-  "version": "1.0.9",
+  "version": "1.0.10",
   "description": "Vue data validation rules, very much inspired from Laravel validation",
   "main": "dist/index.js",
   "scripts": {
