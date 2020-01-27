@@ -30,14 +30,18 @@ export class Validator {
             'before_or_equal',
             'after_or_equal',
             'credit_card_number',
-            'credit_card_cvv'
+            'credit_card_cvv',
+            'credit_card_month',
+            'credit_card_year',
+            'length'
         ];
         this.rulesWithModelRelatedArguments = [
             'before_or_equal',
             'after_or_equal',
             'required_if',
             'credit_card_number',
-            'credit_card_cvv'
+            'credit_card_cvv',
+            'length'
         ];
         this.messages = this.getDefaultErrorMessages();
         this.customMessages = {};
@@ -86,6 +90,9 @@ export class Validator {
             after_or_equal: 'This date must be after or equal to {arg}',
             credit_card_number: 'The card number is invalid',
             credit_card_cvv: 'The card cvv is invalid',
+            credit_card_month: 'The card month is invalid',
+            credit_card_year: 'The card year is invalid',
+            length: 'The length should be {arg}'
         };
     }
 

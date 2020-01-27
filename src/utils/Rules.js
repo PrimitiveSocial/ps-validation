@@ -76,5 +76,18 @@ export function credit_card_cvv(value, arg = null) {
     return regex.test(value);
 }
 
+export function credit_card_month(value, arg = null) {
+    return parseInt(value) <= 12 && parseInt(value) > 0;
+}
+
+export function credit_card_year(value, arg = null) {
+     let currentYear = new Date().getFullYear().toString().substr(-2);
+     return parseInt(value) >= parseInt(currentYear);
+}
+
+export function length(value, arg) {
+    return value.length === arg;
+}
+
 
 
