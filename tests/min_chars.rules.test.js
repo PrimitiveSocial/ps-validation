@@ -23,7 +23,7 @@ test('min_chars rule fails with array as input', () => {
 });
 
 test('min_chars rule fails with number as input', () => {
-    expect(min_chars({}, arg)).toBe(false);
+    expect(min_chars(17, arg)).toBe(false);
 });
 
 test('min_chars rule fails with object as input', () => {

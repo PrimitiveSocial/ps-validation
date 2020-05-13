@@ -23,7 +23,7 @@ test('max_chars rule fails with array as input', () => {
 });
 
 test('max_chars rule fails with number as input', () => {
-    expect(max_chars({}, arg)).toBe(false);
+    expect(max_chars(17, arg)).toBe(false);
 });
 
 test('max_chars rule fails with object as input', () => {
