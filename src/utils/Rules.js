@@ -32,6 +32,20 @@ export function max (value, arg) {
     return parseInt(value) <= parseInt(arg);
 }
 
+export function min_chars (value, arg) {
+    if(typeof value !== 'string')
+        return false;
+
+    return value.length >= parseInt(arg);
+}
+
+export function max_chars (value, arg) {
+    if(typeof value !== 'string')
+        return false;
+
+    return value.length <= parseInt(arg);
+}
+
 export function date (value, arg = null) {
     let date = new Date(value);
     return !isNaN(date.getFullYear()) && !isNaN(date.getMonth()) && !isNaN(date.getDate()) && date.toDateString() !== 'Invalid Date';
