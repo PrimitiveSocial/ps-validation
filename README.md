@@ -86,7 +86,7 @@ You can customize the error message when setting up the validator.
 ```js
 this.validator
    .setCustomMessages({
-      'name': 'The name field must not be empty.'
+      'name.required': 'The name field must not be empty.'
    });
 ```
 _Note: the key provided in the `setCustomMessages()` object parameter, is always set to: `data property` concatenated with `rule name`_
